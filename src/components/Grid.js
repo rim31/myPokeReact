@@ -26,13 +26,14 @@ export default class Grid extends Component {
         const pokemon = new Pokemon(data);
         console.log(pokemon);
         this.setState({imageCurrent: pokemon.sprite})
+        this.setState({pokemon: pokemon})
       })
       .catch(err => console.log(err));
       };
 
 
   componentDidMount() {
-        var url = 'https://pokeapi.co/api/v2/pokemon/?limit=964';
+        var url = 'https://pokeapi.co/api/v2/pokemon/?limit=10';
 
         fetch(url)
         .then((Response)=>Response.json())
@@ -44,11 +45,18 @@ export default class Grid extends Component {
     };  
   render() {
     console.log(this.state.imageCurrent);
+    console.log(this.state.pokemon.type);
     return (
       <div className="sectionHeros" >
         <div className="container">
-          <img src= {this.state.imageCurrent} alt="moi"/>
           <h1>Pokemons</h1>
+          <img src= {this.state.imageCurrent} alt="moi"/>
+          <div>
+            n° {this.state.pokemon.id}
+          </div>
+          <div>
+            {this.state.pokemon.type}
+          </div>
           <div className="flex-container" >
           {
             this.state.data.map((resultMap, key) =>
