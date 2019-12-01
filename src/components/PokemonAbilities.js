@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Chip from '@material-ui/core/Chip';
+// import Chip from '@material-ui/core/Chip';
 
 
 export default class PokemonAbibilities extends Component {
