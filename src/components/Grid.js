@@ -12,15 +12,16 @@ export default class Grid extends Component {
         allCharacters : [],
         myHeros       : '',
         urlGif        : 'https://projectpokemon.org/images/normal-sprite/',
-        ext           : '.gif',
-        pokemon       : {}
+        urlPng        : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
+        extGif        : '.gif',
+        extPng        : '.png',
+        pokemon       : {},
     };
   }
 
     //function click on a card then display detail
     handleSelect(selectedKey) {
         this.setState({imageCurrent: selectedKey})
-        // window.location = '/cards/'+selectedKey;
         fetch(`http://pokeapi.co/api/v2/pokemon/${selectedKey}/`)
       .then(res => res.json())
       .then(data => {
@@ -32,39 +33,29 @@ export default class Grid extends Component {
       .catch(err => console.log(err));
       };
 
-
-  componentDidMount() {
-      //964 pokemons
-        var url = 'https://pokeapi.co/api/v2/pokemon/?limit=10';
-
-        fetch(url)
-        .then((Response)=>Response.json())
-        .then((myResponse) => {
-            this.setState({
-            data:myResponse.results
-            })
-        });
-    };  
   render() {
+    console.log("PAGES:"+this.props.pages);
     console.log(this.state.imageCurrent);
-    console.log(this.state.pokemon.type);
+    console.log(this.state.data);
     return (
       <div className="sectionHeros" >
-        <Main pokemon={this.state.pokemon} />
         <div className="container">
-          <h1>Pokemons</h1>
+          {/* <h1>Pokemons</h1>
           <img src= {this.state.imageCurrent} alt="moi"/>
           <div>
             n° {this.state.pokemon.id}
           </div>
           <div>
             {this.state.pokemon.type}
-          </div>
+          </div> */}
+          <Main pokemons={this.state.pokemon} />
           <div className="flex-container" >
           {
-            this.state.data.map((resultMap, key) =>
+            this.props.pokemons.map((resultMap, key) =>
             <div className="herosCard" key={key} id={resultMap.name}  onClick={() => {this.handleSelect(resultMap.name)}}>
-                <img className="imageGrid"  src={this.state.urlGif + resultMap.name + this.state.ext}  alt="" />
+            {/* <div className="herosCard" key={key} id={resultMap.name} handleonclick={handleonclick}> */}
+                {/* <img className="imageGrid"  src={this.state.urlGif + resultMap.name + this.state.extGif}  alt={resultMap.name} /> */}
+                <img className="imageGrid"  src={this.state.urlPng + (20*this.props.page+key+1) + this.state.extPng}  alt={resultMap.name} />
                 <div>
                   <p>{resultMap.name}</p>
                 </div>
