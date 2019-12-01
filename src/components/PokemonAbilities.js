@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
+import Chip from '@material-ui/core/Chip';
+
 
 export default class PokemonAbibilities extends Component {
    render() {
-        console.log("abilities:"+this.props.pokemonInfo.abilities);
+        // console.log("abilities:"+this.props.pokemonInfo.abilities);
         return (
-              <div className="flex-container" >
-              {
-                // this.props.pokemonInfo.abilities.map((item,i) => <li key={i}>Test</li>)
-
-                // this.props.pokemonInfo.abilities.map((resultMap, key) => (
-                // <div className="herosCard" key={key} >
-                //     <p>{resultMap.name}</p>
-                // </div>))
-              }
+            <div className="flex-container" >
+                {/* {this.props.pokemonInfo.abilities[0].map((item,i) => <Chip key={i} label={item.name} />)} */}
             </div>
         );
       }

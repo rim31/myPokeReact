@@ -14,8 +14,8 @@ export default class Main extends Component {
     this.handleFavorite = this.handleFavorite.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.state = {
-      myHeros  : [],// favorites
-      number   : 0
+      myHeros  : [],// favoris
+      number   : 0  // nombre de pokemon favoris
     };
   }
 
@@ -41,10 +41,12 @@ export default class Main extends Component {
     this.setState({number: out.length})
   }
 
+
+  // suppression de pokemon favoris
   handleDelete(pokemon) {
     let myArray = this.state.myHeros;
 
-    //suppression du pokemon
+    //suppression du pokemon : on supprime du tableau en fonction de l'index trouvé
     let index = myArray.indexOf(pokemon);
     if (index > -1) {
       myArray.splice(index, 1);
@@ -67,11 +69,13 @@ export default class Main extends Component {
             </Typography>
           </CardContent>
         <CardActions>
+          {/* boutton d'ajout de favoris */}
           <Button size="small"  variant="outlined"  onClick={() => {this.handleFavorite(this.props.pokemons.name)}}>Like</Button>
         </CardActions>
         <div>
-          {this.state.number}
+          {this.state.number} Favoris
         </div>
+        {/* liste des favoris supprimable */}
         {this.state.myHeros.map((item,i) => <Chip key={i} label={item} onDelete={() => {this.handleDelete(item)}} />)}
       </Card>
     );
