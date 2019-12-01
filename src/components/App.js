@@ -50,11 +50,6 @@ class App extends Component {
         <div>
           {this.state.page > 0 ? <Button onClick={() => {this.handlePrev()}} variant="contained" color="primary">Précédent</Button> : null}
           {this.state.page < 49 ? <Button onClick={() => {this.handleNext()}} variant="contained" color="primary">Suivant</Button> : null}
-          {/* <button className="Prev" onClick={() => {this.handlePrev()}}>
-                Précédent
-          </button>
-          <button className="Next" onClick={() => {this.handleNext()}}> Suivant
-          </button> */}
           <div>page : {this.state.page}</div>
           <Grid pokemons={this.state.allPokemons} page={this.state.page}/>
         </div>

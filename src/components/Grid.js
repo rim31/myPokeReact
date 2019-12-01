@@ -10,8 +10,6 @@ export default class Grid extends Component {
     this.state = {
         imageCurrent  : '',
         data          : [],
-        allCharacters : [],
-        myHeros       : '',
         urlGif        : 'https://projectpokemon.org/images/normal-sprite/',
         urlPng        : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
         extGif        : '.gif',
@@ -26,7 +24,9 @@ export default class Grid extends Component {
     };
   }
 
-    //function click on a card then display detail
+    /*
+    ** function click on a card then display details
+    */
     handleSelect(selectedKey) {
         this.setState({imageCurrent: selectedKey})
         fetch(`http://pokeapi.co/api/v2/pokemon/${selectedKey}/`)
