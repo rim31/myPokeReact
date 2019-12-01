@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './styles/App.css';
 import Grid from './Grid.js';
-// import Page from './Page.js';
-// import Main from './Main.js';
+import Button from '@material-ui/core/Button';
 
 
 class App extends Component {
@@ -35,12 +34,12 @@ class App extends Component {
   handleNext() {
     let page = (this.state.page > 49 ? 49 : this.state.page + 1);
     this.setState({page: page})
-    this.setState({allPokemons: this.state.data.slice(20 * (page - 1), (20 * page))})
+    this.setState({allPokemons: this.state.data.slice(20 * (page), (20 * (page +1)))})
     console.log(this.state.page);
   }
   handlePrev() {
     let page = (this.state.page < 1 ? 0 : this.state.page - 1);
-    this.setState({allPokemons: this.state.data.slice(20 * (page - 1), (20 * page))})
+    this.setState({allPokemons: this.state.data.slice(20 * (page), (20 * (page+1)))})
     this.setState({page: page})
     console.log(this.state.allPokemons);
   }
@@ -49,15 +48,14 @@ class App extends Component {
     return (
       <div className="App">
         <div>
-          {/* <Page /> */}
-          {/* {this.state.page > 1 ? <button className="Prev" onClick={() => {this.handlePrev()}}>Précédent</button> : null}
-          {this.state.page < 49 ? <button className="Next" onClick={() => {this.handleNext()}}>Suivant</button> : null} */}
-          <button className="Prev" onClick={() => {this.handlePrev()}}>
+          {this.state.page > 0 ? <Button onClick={() => {this.handlePrev()}} variant="contained" color="primary">Précédent</Button> : null}
+          {this.state.page < 49 ? <Button onClick={() => {this.handleNext()}} variant="contained" color="primary">Suivant</Button> : null}
+          {/* <button className="Prev" onClick={() => {this.handlePrev()}}>
                 Précédent
           </button>
           <button className="Next" onClick={() => {this.handleNext()}}> Suivant
-          </button>
-          <div>{this.state.page}</div>
+          </button> */}
+          <div>page : {this.state.page}</div>
           <Grid pokemons={this.state.allPokemons} page={this.state.page}/>
         </div>
       </div>

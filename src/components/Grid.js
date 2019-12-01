@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Pokemon from './Pokemon';
 import Main from './Main';
+import PokemonAbibilities from './PokemonAbilities';
 
 export default class Grid extends Component {
   constructor(props) {
@@ -15,7 +16,13 @@ export default class Grid extends Component {
         urlPng        : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
         extGif        : '.gif',
         extPng        : '.png',
-        pokemon       : {},
+        pokemon       : {
+                            'id'    : 42,
+                            "name"  : "oseng",
+                            'sprite': "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT6XMb5twV5bvYg7bxwu_3_NrUjaaaE7_qQFxAZgS97TZUirco6",
+                            'type'  : "master"
+                        },
+        pokemonInfo    :{}
     };
   }
 
@@ -26,9 +33,17 @@ export default class Grid extends Component {
       .then(res => res.json())
       .then(data => {
         const pokemon = new Pokemon(data);
-        console.log(pokemon);
+        // console.log(pokemon);
         this.setState({imageCurrent: pokemon.sprite})
         this.setState({pokemon: pokemon})
+      })
+      .catch(err => console.log(err));
+
+      fetch(`https://pokeapi.co/api/v2/pokemon/${this.state.pokemon.name}/`)
+      .then(res => res.json())
+      .then(data => {
+        this.setState({pokemonInfo: data})
+        console.log(data);
       })
       .catch(err => console.log(err));
       };
@@ -40,21 +55,12 @@ export default class Grid extends Component {
     return (
       <div className="sectionHeros" >
         <div className="container">
-          {/* <h1>Pokemons</h1>
-          <img src= {this.state.imageCurrent} alt="moi"/>
-          <div>
-            n° {this.state.pokemon.id}
-          </div>
-          <div>
-            {this.state.pokemon.type}
-          </div> */}
-          <Main pokemons={this.state.pokemon} />
+          <Main pokemons={this.state.pokemon} pokemonInfo={this.state.pokemonInfo}/>
+          <PokemonAbibilities pokemonInfo={this.state.pokemonInfo}/>
           <div className="flex-container" >
           {
             this.props.pokemons.map((resultMap, key) =>
             <div className="herosCard" key={key} id={resultMap.name}  onClick={() => {this.handleSelect(resultMap.name)}}>
-            {/* <div className="herosCard" key={key} id={resultMap.name} handleonclick={handleonclick}> */}
-                {/* <img className="imageGrid"  src={this.state.urlGif + resultMap.name + this.state.extGif}  alt={resultMap.name} /> */}
                 <img className="imageGrid"  src={this.state.urlPng + (20*this.props.page+key+1) + this.state.extPng}  alt={resultMap.name} />
                 <div>
                   <p>{resultMap.name}</p>
