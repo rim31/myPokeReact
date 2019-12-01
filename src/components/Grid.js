@@ -34,7 +34,7 @@ export default class Grid extends Component {
       };
 
   render() {
-    console.log("PAGES:"+this.props.pages);
+    console.log("PAGES:"+this.props.page);
     console.log(this.state.imageCurrent);
     console.log(this.state.data);
     return (

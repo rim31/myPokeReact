@@ -11,7 +11,7 @@ class App extends Component {
     this.state = {
       data          : [],//response fetch url
       myHeros       : '',// favorites
-      page          : 1,// number of page
+      page          : 0,// number of page
       allPokemons   : [],// array of pokemons according pages
       pokemon       : {} //object pokemon for details display
     };
@@ -40,9 +40,9 @@ class App extends Component {
   }
   handlePrev() {
     let page = (this.state.page < 1 ? 0 : this.state.page - 1);
-    this.setState({allPokemons: this.state.data.slice(20 * (page -1), (20 * page))})
+    this.setState({allPokemons: this.state.data.slice(20 * (page - 1), (20 * page))})
     this.setState({page: page})
-    console.log(this.state.page);
+    console.log(this.state.allPokemons);
   }
 
   render() {
