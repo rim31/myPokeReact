@@ -12,6 +12,7 @@ export default class Main extends Component {
   constructor(props) {
     super(props);
     this.handleFavorite = this.handleFavorite.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
     this.state = {
       myHeros  : [],// favorites
       number   : 0
@@ -38,10 +39,18 @@ export default class Main extends Component {
     }
     this.setState({myHeros: out})
     this.setState({number: out.length})
-    // console.log("num : "+num);
-    // console.log("num out: "+out.length);
-    // console.table("list  fav : "+this.state.myHeros);
-    // console.table("list  out : "+out);
+  }
+
+  handleDelete(pokemon) {
+    let myArray = this.state.myHeros;
+
+    //suppression du pokemon
+    let index = myArray.indexOf(pokemon);
+    if (index > -1) {
+      myArray.splice(index, 1);
+    } 
+    this.setState({number: myArray.length})
+    this.setState({myHeros: myArray})
   }
 
   render() {
@@ -63,7 +72,7 @@ export default class Main extends Component {
         <div>
           {this.state.number}
         </div>
-        {this.state.myHeros.map((item,i) => <Chip key={i} label={item} />)}
+        {this.state.myHeros.map((item,i) => <Chip key={i} label={item} onDelete={() => {this.handleDelete(item)}} />)}
       </Card>
     );
   }
