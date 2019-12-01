@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Pokemon from './Pokemon';
+import Main from './Main';
 
 export default class Grid extends Component {
   constructor(props) {
@@ -33,6 +34,7 @@ export default class Grid extends Component {
 
 
   componentDidMount() {
+      //964 pokemons
         var url = 'https://pokeapi.co/api/v2/pokemon/?limit=10';
 
         fetch(url)
@@ -48,6 +50,7 @@ export default class Grid extends Component {
     console.log(this.state.pokemon.type);
     return (
       <div className="sectionHeros" >
+        <Main pokemon={this.state.pokemon} />
         <div className="container">
           <h1>Pokemons</h1>
           <img src= {this.state.imageCurrent} alt="moi"/>
@@ -61,7 +64,6 @@ export default class Grid extends Component {
           {
             this.state.data.map((resultMap, key) =>
             <div className="herosCard" key={key} id={resultMap.name}  onClick={() => {this.handleSelect(resultMap.name)}}>
-            {/* <div className="herosCard" key={key} id={resultMap.name} handleonclick={handleonclick}> */}
                 <img className="imageGrid"  src={this.state.urlGif + resultMap.name + this.state.ext}  alt="" />
                 <div>
                   <p>{resultMap.name}</p>

@@ -32,7 +32,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Main pokemon={this.state.pokemon} />
         <div>
           {/* <Page /> */}
           <button className="Prev" onClick={() => {this.handlePrev()}}>
