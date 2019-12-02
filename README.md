@@ -1,5 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+MyPokedex : React - (not redux yet)
+
+![alt text](https://raw.githubusercontent.com/rim31/myPoke/master/pokedex.png)
+
+
+
 ## Available Scripts
 
 ### `npm install`
