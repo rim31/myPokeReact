@@ -5,6 +5,11 @@ MyPokedex : React - (not redux yet)
 ![alt text](https://raw.githubusercontent.com/rim31/myPoke/master/pokedex.png)
 
 
+- pagination
+- like dislike pokemon
+- display detail in 3D
+
+
 
 ## Available Scripts
 
