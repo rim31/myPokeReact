@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Chip from '@material-ui/core/Chip';
+// import PokemonAbibilities from './PokemonAbilities';
 
 
 export default class Main extends Component {
@@ -64,10 +65,11 @@ export default class Main extends Component {
               {this.props.pokemons.name}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              <h4 className='data-name'>n°: {this.props.pokemons.id} </h4>
-              <p className="data-char">Type: {this.props.pokemons.type}</p>
+              <span className='data-name'>n°: {this.props.pokemons.id} </span>
+              <span className="data-char"> - Type : {this.props.pokemons.type}</span>
             </Typography>
           </CardContent>
+          {/* <PokemonAbibilities pokemonInfo={this.props.pokemonInfo}/> */}
         <CardActions>
           {/* boutton d'ajout de favoris */}
           <Button size="small"  variant="outlined"  onClick={() => {this.handleFavorite(this.props.pokemons.name)}}>Like</Button>

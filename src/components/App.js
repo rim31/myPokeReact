@@ -34,14 +34,14 @@ class App extends Component {
     let page = (this.state.page > 49 ? 49 : this.state.page + 1);
     this.setState({page: page})
     this.setState({allPokemons: this.state.data.slice(20 * (page), (20 * (page +1)))})
-    console.log(this.state.page);
+    // console.log(this.state.page);
   }
   // page précédente : création de tableau par tranche de 20
   handlePrev() {
     let page = (this.state.page < 1 ? 0 : this.state.page - 1);
     this.setState({allPokemons: this.state.data.slice(20 * (page), (20 * (page+1)))})
     this.setState({page: page})
-    console.log(this.state.allPokemons);
+    // console.log(this.state.allPokemons);
   }
 
   render() {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Pokemon from './Pokemon';
 import Main from './Main';
-import PokemonAbibilities from './PokemonAbilities';
+// import PokemonAbibilities from './PokemonAbilities';
 
 export default class Grid extends Component {
   constructor(props) {
@@ -53,7 +53,7 @@ export default class Grid extends Component {
     return (
       <div className="sectionHeros" >
           <Main pokemons={this.state.pokemon} pokemonInfo={this.state.pokemonInfo}/>
-          <PokemonAbibilities pokemonInfo={this.state.pokemonInfo}/>
+          {/* <PokemonAbibilities pokemonInfo={this.state.pokemonInfo}/> */}
         <div className="container">
           <div className="flex-container" >
           {//parcous du tableau des 20 pokémons et afichage de leurs image et leurs noms
